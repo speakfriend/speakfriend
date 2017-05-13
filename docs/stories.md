@@ -1,3 +1,17 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Terminology](#terminology)
+- [0.1](#01)
+  - [Speakers:](#speakers)
+  - [Organizations](#organizations)
+- [0.2](#02)
+  - [Speakers:](#speakers-1)
+  - [Organizations](#organizations-1)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Terminology
 
 Before identifying what our user stories are, we will try and keep an updated list of the teminology used to describe our platform. Sometimes user stories will be broken up by types of user.
