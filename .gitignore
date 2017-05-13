@@ -1,3 +1,5 @@
 node_modules
 dist/elm.js
+dist/main.css
 elm-stuff
+npm-debug.log
