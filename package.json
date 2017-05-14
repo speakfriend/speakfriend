@@ -1,0 +1,18 @@
+{
+  "name": "SpeakFriend",
+  "version": "0.0.1",
+  "main": "index.js",
+  "repository": "git@github.com:speakfriend/speakfriend.git",
+  "author": "teesloane <tylersloane@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "elm": "node_modules/.bin/elm-live src/Main.elm --output=dist/elm.js --open --path-to-elm-make=node_modules/.bin/elm-make",
+    "sass": "node_modules/.bin/node-sass -w src/styles/main.scss -o dist/",
+    "start": "node_modules/.bin/nf start"
+  },
+  "devDependencies": {
+    "elm": "^0.18.0",
+    "elm-live": "^2.7.4",
+    "node-sass": "^4.5.2"
+  }
+}
