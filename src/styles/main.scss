@@ -1,3 +1,17 @@
+// Imports:
+@import "reset";
+@import "variables";
+@import "mixins";
+
 body {
-    background: green;
+  font-family: $type-primary;
+}
+
+.Speak__header {
+  display: flex;
+  background: $color-primary;
+  min-height: 2rem;
+  padding: 2rem;
+  color: #efefef;
+  @include header_primary_mixin(20px);
 }

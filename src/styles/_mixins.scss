@@ -1,0 +1,4 @@
+@mixin header_primary_mixin($size) {
+  font-family: $type-accent;
+  font-size: $size;
+}
