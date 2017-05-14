@@ -1,0 +1,32 @@
+.SpeakFriend {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.Speak__header {
+  display: flex;
+  background: $color-primary;
+  min-height: 2rem;
+  padding: 2rem;
+  color: #efefef;
+  @include header_primary_mixin(20px);
+ }
+
+.Speak__Container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  background: #efefef;
+  justify-content: center;
+  align-items: center;
+}
+
+.Speak__footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 64px;
+  background: #888;
+  color: #efefef;
+}

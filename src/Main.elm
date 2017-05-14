@@ -2,9 +2,12 @@ module Main exposing (..)
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
-import Html.Events exposing (onInput)
 
 
+-- import Html.Events exposing (onInput)
+
+
+main : Program Never Model Msg
 main =
     Html.beginnerProgram { model = model, view = view, update = update }
 
@@ -50,10 +53,26 @@ update msg model =
 view : Model -> Html Msg
 view model =
     div [ class "SpeakFriend" ]
-        [ header
-            [ class "Speak__Header" ]
-            [ text "Speak Friend" ]
-        , section
-            [ class "Speak__form" ]
-            [ text "Form - To do." ]
+        [ viewHeader
+        , viewContainer
+        , viewFooter
         ]
+
+
+
+-- Static View Functions: Return the Header for the app
+
+
+viewHeader : Html a
+viewHeader =
+    header [ class "Speak__Header" ] [ text "Speak Friend" ]
+
+
+viewContainer : Html a
+viewContainer =
+    main_ [ class "Speak__Container" ] [ text "I am the main container" ]
+
+
+viewFooter : Html a
+viewFooter =
+    header [ class "Speak__Footer" ] [ text "im the footer" ]

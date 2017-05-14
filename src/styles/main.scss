@@ -2,16 +2,13 @@
 @import "reset";
 @import "variables";
 @import "mixins";
+@import "fixtures";
+
+html {
+  height: 100%;
+}
 
 body {
   font-family: $type-primary;
-}
-
-.Speak__header {
-  display: flex;
-  background: $color-primary;
-  min-height: 2rem;
-  padding: 2rem;
-  color: #efefef;
-  @include header_primary_mixin(20px);
+  height: 100%;
 }
