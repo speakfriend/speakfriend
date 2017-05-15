@@ -1,10 +1,10 @@
 module Main exposing (..)
 
+-- IMPORTS
+
 import Html exposing (..)
 import Html.Attributes exposing (..)
-
-
--- import Html.Events exposing (onInput)
+import Html.Events exposing (onInput)
 
 
 main : Program Never Model Msg
@@ -19,12 +19,13 @@ main =
 type alias Model =
     { name : String
     , email : String
+    , description : String
     }
 
 
 model : Model
 model =
-    Model "" ""
+    Model "" "" ""
 
 
 
@@ -34,6 +35,7 @@ model =
 type Msg
     = Name String
     | Email String
+    | Description String
 
 
 update : Msg -> Model -> Model
@@ -44,6 +46,9 @@ update msg model =
 
         Email email ->
             { model | email = email }
+
+        Description description ->
+            { model | description = description }
 
 
 
@@ -60,7 +65,20 @@ view model =
 
 
 
--- Static View Functions: Return the Header for the app
+-- Dynamic View Functions: Each of these functions interact with the model in some way.
+
+
+viewSubmissionForm : Html Msg
+viewSubmissionForm =
+    section [ class "Speaker__Formbox" ]
+        [ input [ type_ "text", placeholder "Name", onInput Name ] []
+        , input [ type_ "text", placeholder "Email", onInput Email ] []
+        , textarea [] []
+        ]
+
+
+
+-- Static View Functions: Return HTML that is not interacted with. This DOES nest dynamic view functions^
 
 
 viewHeader : Html a
@@ -68,9 +86,11 @@ viewHeader =
     header [ class "Speak__Header" ] [ text "Speak Friend" ]
 
 
-viewContainer : Html a
+viewContainer : Html Msg
 viewContainer =
-    main_ [ class "Speak__Container" ] [ text "I am the main container" ]
+    main_ [ class "Speak__Container" ]
+        [ viewSubmissionForm
+        ]
 
 
 viewFooter : Html a
