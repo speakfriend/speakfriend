@@ -1,0 +1,28 @@
+.Submission {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+
+  input[type=text], textarea {
+    width: 80%;
+    margin: 1rem 0;
+    padding: 1rem;
+    border: 0;
+    resize: none;
+  }
+
+  textarea {
+    height: 20%;
+  }
+
+}
+
+
+// TODO: move elsewhere, once filled in.
+.placeholder_welcome {
+  display: flex;
+  flex-grow: 1;
+  text-align: center;
+  justify-content: center;
+}

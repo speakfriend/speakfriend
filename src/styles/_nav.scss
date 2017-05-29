@@ -4,9 +4,10 @@
   align-items: center;
   color: red;
   align-self: center;
+  padding: 10px;
   @include container;
 
-  & * {
+  li {
     padding: 0 10px;
   }
 }

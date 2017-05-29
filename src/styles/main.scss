@@ -3,7 +3,10 @@
 @import "variables";
 @import "mixins";
 @import "fixtures";
+
+// view function styles ("components", but not really)
 @import "nav";
+@import "submission";
 
 html {
   height: 100%;
@@ -12,4 +15,5 @@ html {
 body {
   font-family: $type-primary;
   height: 100%;
+  background: #efefef;
 }

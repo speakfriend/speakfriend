@@ -70,10 +70,10 @@ view model =
 
 viewSubmissionForm : Html Msg
 viewSubmissionForm =
-    section [ class "Speaker__Formbox" ]
+    section [ class "Submission section_container " ]
         [ input [ type_ "text", placeholder "Name", onInput Name ] []
         , input [ type_ "text", placeholder "Email", onInput Email ] []
-        , textarea [] []
+        , textarea [height 100, placeholder "A brief description of your proposal..."] []
         ]
 
 
@@ -96,7 +96,8 @@ viewNavigation =
 viewContainer : Html Msg
 viewContainer =
     main_ [ class "Speak__Container" ]
-        [ viewSubmissionForm
+        [ div [ class "placeholder_welcome" ] [ text "placeholder " ]
+        , viewSubmissionForm
         ]
 
 
