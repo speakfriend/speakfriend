@@ -1,0 +1,22 @@
+.Nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: red;
+  align-self: center;
+  @include container;
+
+  & * {
+    padding: 0 10px;
+  }
+}
+
+.Nav__masthead {
+  font-size: 1.8rem;
+  color: rgb(52, 152, 219);
+}
+
+.Nav__links {
+  list-style-type: none;
+  display: flex;
+}

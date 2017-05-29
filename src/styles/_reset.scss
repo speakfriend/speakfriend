@@ -1,10 +1,11 @@
+@import './_variables.scss';
+
 html {
   font-size: 62.5%;
 }
 
 body {
   font-size: 1.4rem;
-
 }
 
 html, body, div, form, fieldset, legend, label
@@ -28,3 +29,11 @@ th, td
 h1, h2, h3, h4, h5, h6, th, td, caption { font-weight:normal; }
 
 img { border: 0; }
+
+a {
+  cursor: pointer;
+  color: $col-accent-dark;
+  &:hover {
+    color: $col-accent-light;
+  }
+}

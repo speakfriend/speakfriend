@@ -1,4 +1,8 @@
 @mixin header_primary_mixin($size) {
-  font-family: $type-accent;
   font-size: $size;
+}
+
+@mixin container() {
+  max-width: 960px;
+  width: 100%;
 }

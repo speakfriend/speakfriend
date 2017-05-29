@@ -58,7 +58,7 @@ update msg model =
 view : Model -> Html Msg
 view model =
     div [ class "SpeakFriend" ]
-        [ viewHeader
+        [ viewNavigation
         , viewContainer
         , viewFooter
         ]
@@ -81,9 +81,16 @@ viewSubmissionForm =
 -- Static View Functions: Return HTML that is not interacted with. This DOES nest dynamic view functions^
 
 
-viewHeader : Html a
-viewHeader =
-    header [ class "Speak__Header" ] [ text "Speak Friend" ]
+viewNavigation : Html a
+viewNavigation =
+    nav [ class "Nav" ]
+        [ h1 [ class "Nav__masthead" ] [ text "Speak Friend" ]
+        , ul [ class "Nav__links" ]
+            [ li [] [ a [ href "#" ] [ text "contribute" ] ]
+            , li [] [ a [ href "#" ] [ text "about" ] ]
+            , li [] [ a [ href "#" ] [ text "contact" ] ]
+            ]
+        ]
 
 
 viewContainer : Html Msg
