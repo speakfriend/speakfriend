@@ -1,21 +1,71 @@
 .Submission {
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: space-around;
   flex-grow: 1;
+  height: 400px;
 
-  input[type=text], textarea {
-    width: 80%;
-    margin: 1rem 0;
+  // responsiveness for text + form
+  @media(max-width: $break-tablet) {
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    min-height: 600px;
+    & * {
+      width: 90%;
+      align-items: center;
+    }
+  }
+}
+
+// container surrounding the submission text
+.Submission__text {
+  @include two-up;
+  padding-right: 5rem;
+  align-self: flex-start;
+
+  h3 {
+    margin-top: 0;
+  }
+
+  @media(max-width:$break-tablet) {
+    padding-right: 0;
+    align-self: center;
+  }
+}
+
+// Container surrounding the form elements
+.Submission__form {
+  @include two-up;
+  justify-content: space-between;
+  align-self: flex-start;
+
+  input[type=text] {
+    @include border(1px);
     padding: 1rem;
-    border: 0;
     resize: none;
+    margin-bottom: 2rem;
   }
 
   textarea {
-    height: 20%;
+    @include border(1px);
+    padding: 1rem;
+    margin-bottom: 2rem;
+    resize: none;
+    height: 40%;
+    min-height: 150px;
   }
 
+  button {
+    align-self: flex-start;
+  }
+
+  @media(max-width:$break-tablet) {
+    align-self: center;
+    button {
+      align-self: center;
+    }
+  }
 }
 
 
@@ -24,5 +74,7 @@
   display: flex;
   flex-grow: 1;
   text-align: center;
+  align-items: center;
   justify-content: center;
+  border: 1px solid black;
 }

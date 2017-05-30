@@ -18,19 +18,13 @@
   display: flex;
   flex-direction: row;
   flex-grow: 1;
-  background: #efefef;
+  min-height: 600px;
   justify-content: center;
   align-items: center;
   align-self: center;
 
-  @media(max-width: $break-tablet) {
+  @media(max-width: $break-tablet ) {
     flex-direction: column;
-    width: 100%;
-    align-items: center;
-    & * {
-      width: 90%;
-      align-items: center;
-    }
   }
 }
 

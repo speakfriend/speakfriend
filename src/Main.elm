@@ -60,7 +60,8 @@ view model =
     div [ class "SpeakFriend" ]
         [ viewNavigation
         , viewContainer
-        , viewFooter
+
+        -- , viewFooter -- commented out until needed
         ]
 
 
@@ -71,14 +72,23 @@ view model =
 viewSubmissionForm : Html Msg
 viewSubmissionForm =
     section [ class "Submission section_container " ]
-        [ input [ type_ "text", placeholder "Name", onInput Name ] []
-        , input [ type_ "text", placeholder "Email", onInput Email ] []
-        , textarea [height 100, placeholder "A brief description of your proposal..."] []
+        [ div [ class "Submission__text" ]
+            [ h3 [] [ text "Hello! 👋" ]
+            , p [] [ text "Speak, Friend connects people who want to speak on a topic with people and organizations seeking speakers for events." ]
+            , p [] [ text "If you are looking to speak at conferences, workshops, meetups, etc--this tool might be able to help. Submit a proposal using our form and tag it so event runners may see it." ]
+            , p [] [ text "Are you an event organizer looking for speakers? You can use the other half of Speak, Friend to post opening for speakers." ]
+            ]
+        , div [ class "Submission__form" ]
+            [ input [ type_ "text", placeholder "Name", onInput Name ] []
+            , input [ type_ "text", placeholder "Email", onInput Email ] []
+            , textarea [ height 100, placeholder "A description of the topic you'd like to speak on..." ] []
+            , button [] [ text "SUBMIT" ]
+            ]
         ]
 
 
 
--- Static View Functions: Return HTML that is not interacted with. This DOES nest dynamic view functions^
+-- Static View Functions: Return HTML that is not inteselfracted with. This DOES nest dynamic view functions^
 
 
 viewNavigation : Html a
@@ -86,9 +96,7 @@ viewNavigation =
     nav [ class "Nav" ]
         [ h1 [ class "Nav__masthead" ] [ text "Speak Friend" ]
         , ul [ class "Nav__links" ]
-            [ li [] [ a [ href "#" ] [ text "contribute" ] ]
-            , li [] [ a [ href "#" ] [ text "about" ] ]
-            , li [] [ a [ href "#" ] [ text "contact" ] ]
+            [ li [] [ a [ href "https://github.com/speakfriend/speakfriend/", target "_blank" ] [ text "contribute" ] ]
             ]
         ]
 
@@ -96,11 +104,10 @@ viewNavigation =
 viewContainer : Html Msg
 viewContainer =
     main_ [ class "Speak__Container" ]
-        [ div [ class "placeholder_welcome" ] [ text "placeholder " ]
-        , viewSubmissionForm
-        ]
+        [ viewSubmissionForm ]
 
 
-viewFooter : Html a
-viewFooter =
-    header [ class "Speak__Footer" ] [ text "im the footer" ]
+
+-- viewFooter : Html a
+-- viewFooter =
+--     header [ class "Speak__Footer" ] [ text "im the footer" ]
