@@ -13,6 +13,7 @@
   "devDependencies": {
     "elm": "^0.18.0",
     "elm-live": "^2.7.4",
-    "node-sass": "^4.5.2"
+    "node-sass": "^4.5.2",
+    "foreman": "^2.0.0"
   }
 }

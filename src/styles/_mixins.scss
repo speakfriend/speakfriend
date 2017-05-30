@@ -1,0 +1,18 @@
+@mixin header_primary_mixin($size) {
+  font-size: $size;
+}
+
+@mixin container() {
+  max-width: 960px;
+  width: 95%;
+}
+
+@mixin two-up() {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+@mixin border($size) {
+  border: $size solid #444;
+}
