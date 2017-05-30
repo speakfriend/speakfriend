@@ -58,6 +58,15 @@
 
   button {
     align-self: flex-start;
+    border: 1px solid #333;
+    padding: 5px 10px;
+    background: none;
+
+    &:hover {
+      background: $col-accent-light;
+      color: white;
+      border: 1px solid #333;
+    }
   }
 
   @media(max-width:$break-tablet) {
@@ -66,15 +75,4 @@
       align-self: center;
     }
   }
-}
-
-
-// TODO: move elsewhere, once filled in.
-.placeholder_welcome {
-  display: flex;
-  flex-grow: 1;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid black;
 }
