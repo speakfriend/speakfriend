@@ -6,14 +6,16 @@
   "author": "teesloane <tylersloane@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "elm": "node_modules/.bin/elm-live src/Main.elm --output=dist/elm.js --open --path-to-elm-make=node_modules/.bin/elm-make",
-    "sass": "node_modules/.bin/node-sass -w src/styles/main.scss -o dist/",
-    "start": "node_modules/.bin/nf start"
+    "test_rest": "mocha --compilers js:babel-core/register ./openresty/tests/rest/",
+    "test_db": "( set -a && . ./.env && set +a && docker run -i -t --rm --name pgtap --net ${COMPOSE_PROJECT_NAME}_default --link ${COMPOSE_PROJECT_NAME}_db_1:db -v $(pwd)/db/tests/:/test -e DATABASE=$DB_NAME -e USER=$SUPER_USER -e PASSWORD=$SUPER_USER_PASSWORD lren/pgtap )",
+    "test": "npm run test_db && npm run test_rest"
   },
   "devDependencies": {
-    "elm": "^0.18.0",
-    "elm-live": "^2.7.4",
-    "node-sass": "^4.5.2",
-    "foreman": "^2.0.0"
+    "babel-core": "^6.24.0",
+    "babel-preset-latest": "^6.24.1",
+    "dotenv": "4.0.0",
+    "mocha": "^3.2.0",
+    "should": "^11.2.0",
+    "supertest": "^3.0.0"
   }
 }
