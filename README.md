@@ -10,7 +10,7 @@ Make sure that you have [Docker](https://www.docker.com/community-edition) v17 o
 Compose](https://docs.docker.com/compose/):
 
 ```bash
-docker-compose up -d            # Launch Docker containers
+docker-compose up            # Launch Docker containers
 ```
 
 You can read more about project setup in our [docs](./docs/project_scaffold.md) folder.
