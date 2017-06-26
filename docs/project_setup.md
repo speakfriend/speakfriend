@@ -5,6 +5,7 @@
 - [Development Setup.](#development-setup)
   - [Build Process](#build-process)
   - [Working without Docker](#working-without-docker)
+- [Setting up](#setting-up)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 

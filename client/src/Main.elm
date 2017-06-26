@@ -4,12 +4,19 @@ module Main exposing (..)
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
-import Html.Events exposing (onInput)
+import Html.Events exposing (onInput, onClick)
+import Http
+import Json.Decode as Decode
 
 
 main : Program Never Model Msg
 main =
-    Html.beginnerProgram { model = model, view = view, update = update }
+    Html.program
+        { init = init
+        , view = view
+        , update = update
+        , subscriptions = subscriptions
+        }
 
 
 
@@ -25,7 +32,15 @@ type alias Model =
 
 model : Model
 model =
-    Model "" "" ""
+    { name = ""
+    , email = ""
+    , description = ""
+    }
+
+
+init : ( Model, Cmd msg )
+init =
+    ( model, Cmd.none )
 
 
 
@@ -36,19 +51,67 @@ type Msg
     = Name String
     | Email String
     | Description String
+    | SubmitForm
+    | SubmissionState (Result Http.Error String)
 
 
-update : Msg -> Model -> Model
+
+-- update : Msg -> Model -> ( Model, Cmd Msg )
+
+
+update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
         Name name ->
             { model | name = name }
+                ! []
 
         Email email ->
             { model | email = email }
+                ! []
 
         Description description ->
             { model | description = description }
+                ! []
+
+        SubmitForm ->
+            ( model, submitFormFields model.name model.email model.description )
+
+        SubmissionState (Ok something) ->
+            ( model, Cmd.none )
+
+        SubmissionState (Err _) ->
+            ( model, Cmd.none )
+
+
+
+-- Subscriptions
+
+
+subscriptions : Model -> Sub Msg
+subscriptions model =
+    Sub.none
+
+
+
+-- HTTP reqs'
+
+
+submitFormFields : String -> String -> String -> Cmd Msg
+submitFormFields name email description =
+    let
+        url =
+            "http://localhost:8080/rest/items"
+
+        request =
+            Http.get url decodeFormSubmission
+    in
+        Http.send SubmissionState request
+
+
+decodeFormSubmission : Decode.Decoder String
+decodeFormSubmission =
+    Decode.at [ "data", "image_url" ] Decode.string
 
 
 
@@ -60,8 +123,6 @@ view model =
     div [ class "SpeakFriend" ]
         [ viewNavigation
         , viewContainer
-
-        -- , viewFooter -- commented out until needed
         ]
 
 
@@ -82,7 +143,7 @@ viewSubmissionForm =
             [ input [ type_ "text", placeholder "Name", onInput Name ] []
             , input [ type_ "text", placeholder "Email", onInput Email ] []
             , textarea [ height 100, placeholder "A description of the topic you'd like to speak on..." ] []
-            , button [] [ text "SUBMIT" ]
+            , button [ onClick SubmitForm ] [ text "SUBMIT" ]
             ]
         ]
 
@@ -105,9 +166,3 @@ viewContainer : Html Msg
 viewContainer =
     main_ [ class "Speak__Container" ]
         [ viewSubmissionForm ]
-
-
-
--- viewFooter : Html a
--- viewFooter =
---     header [ class "Speak__Footer" ] [ text "im the footer" ]
