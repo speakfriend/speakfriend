@@ -1,0 +1,23 @@
+@import '~style/helpers';
+
+.header {
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
+  margin: 0 auto;
+  width: 100%;
+
+  h1 {
+    font-size: 24px;
+    font-weight: 400;
+  }
+
+  .wrapper {
+    @include wrapper();
+  }
+
+  nav {
+    a {
+      padding: 0 1rem;
+    }
+  }
+
+}

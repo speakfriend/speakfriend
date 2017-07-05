@@ -2,7 +2,6 @@
 indent_style = space
 indent_size = 2
 
-
-[.elm]
+[.js]
 indent_style = space
-indent_size = 4
+indent_size = 2
