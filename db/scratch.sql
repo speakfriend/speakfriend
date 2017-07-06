@@ -13,3 +13,6 @@ grant web_anon to postgres;
 
 grant usage on schema api to web_anon;
 grant select on api.submissions to web_anon;
+
+-- I don't know what this does; but it's necessary to make post reqs
+grant usage, select on sequence api.submissions_id_seq to web_anon;

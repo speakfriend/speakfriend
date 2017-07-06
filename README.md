@@ -4,7 +4,7 @@
 
 - [speakfriend](#speakfriend)
 - [Setting up the repo](#setting-up-the-repo)
-  - [Contributors](#contributors)
+- [Contributors](#contributors)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -16,7 +16,38 @@
 
 # Setting up the repo
 
-## Contributors
+There are three parts to our application right now:
+
+**Client**: This is the front end. It is written in Preact. It uses webpack under the hood of Preact-CLI.
+
+**Api**: Our api is served by POST**GREST**.
+
+**DB**: Our db is in Postgres.
+
+Let's install our stack!
+
+1. [Download and install postgrest](https://postgrest.com/en/v4.1/install.html) (< instructions on the page linked )
+2. Move the downloaded binary of _postgrest_ into the root of our project folder
+3. Install our dependencies
+
+```sh
+make install
+```
+
+4. Run the entire stack
+
+```
+make start
+```
+
+Note: you can run each part of the stack independently; for example, start the client with:
+
+```sh
+npm run start-client
+```
+
+
+# Contributors
 
 Thanks goes to our contributors ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
 

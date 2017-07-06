@@ -50,6 +50,8 @@ Main Goal: As an organization we can use `SpeakFriend` to indicate open `spots` 
 ## Speakers:
 
 - As a speaker, I can be sure that my information is secure and that my ideas are only shown to organizations based on a specific criteria (example, I only want organizations within `city of x` to be able to see submissions)
+    - similarly, if I'm viewing the "page" for my submission, I want to be sure that
+    no one can just input a simple id into a route to view my submission.
 - As a speaker, I can automatically be reminded when I have an upcoming talk.
 
 

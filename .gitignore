@@ -2,7 +2,7 @@ node_modules
 npm-debug.log
 
 
-# elm client
-client/dist/*.js
-client/dist/*.css
-elm-stuff
+## postgrest / api stuff ##
+
+# postgrest binary
+postgrest

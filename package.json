@@ -6,24 +6,21 @@
   "author": "teesloane <tylersloane@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "test_rest": "mocha --compilers js:babel-core/register ./openresty/tests/rest/",
-    "test_db": "( set -a && . ./.env && set +a && docker run -i -t --rm --name pgtap --net ${COMPOSE_PROJECT_NAME}_default --link ${COMPOSE_PROJECT_NAME}_db_1:db -v $(pwd)/db/tests/:/test -e DATABASE=$DB_NAME -e USER=$SUPER_USER -e PASSWORD=$SUPER_USER_PASSWORD lren/pgtap )",
-    "test": "npm run test_db && npm run test_rest",
+    "start-client": "cd client && npm run start",
+    "start-db": "docker start speakfriend_db",
+    "start-api": "postgrest db/db.conf",
+    "start": "node_modules/.bin/nf start",
+    "teardown": "docker stop speakfriend_db",
     "add-contributor": "all-contributors add",
     "generate-contributors": "all-contributors generate"
+
   },
   "devDependencies": {
     "all-contributors-cli": "^4.3.0",
-    "babel-core": "^6.24.0",
-    "babel-preset-latest": "^6.24.1",
     "dotenv": "4.0.0",
-    "eslint": "^4.1.1",
-    "eslint-config-airbnb": "^15.0.1",
-    "eslint-plugin-import": "^2.6.1",
-    "eslint-plugin-jsx-a11y": "^6.0.2",
-    "eslint-plugin-react": "^7.1.0",
-    "mocha": "^3.2.0",
-    "should": "^11.2.0",
-    "supertest": "^3.0.0"
+    "eslint": "^4.1.1"
+  },
+  "dependencies": {
+    "foreman": "^2.0.0"
   }
 }

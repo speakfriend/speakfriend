@@ -9,6 +9,16 @@
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
+- [Project setup](#project-setup)
+- [Add yourself as a contributor](#add-yourself-as-a-contributor)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+- [Project setup](#project-setup)
+- [Add yourself as a contributor](#add-yourself-as-a-contributor)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 Thanks for being willing to contribute!
 
 **Working on your first Pull Request?** You can learn how from this *free* series
