@@ -1,6 +1,8 @@
 import { h, Component } from 'preact';
+
 import s from './style';
 import config from '../../config';
+import { fetch_post, updateFormField } from '../../functions';
 
 export default class Home extends Component {
   state = {
@@ -9,41 +11,19 @@ export default class Home extends Component {
     speaker_description: '', // TODO: better name - speaker_topic? topic_description?
   };
 
-  updateFormField = e => {
-    this.setState({
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  collectSubmissionFormPayload = () => {
-    const { speaker_name, speaker_email, speaker_description } = this.state;
-    return JSON.stringify({
-      name: speaker_name,
-      email: speaker_email,
-      description: speaker_description,
-    });
-  };
-
   submitPitch = e => {
-    fetch(config.API + "/submissions", {
-      method: 'POST',
-      body: this.collectSubmissionFormPayload(),
-      headers: { 'Content-Type': 'application/json' }
-    })
-      .then(function(res) {
-        return res.json();
-      })
-      .then(function(data) {
-        console.log(JSON.stringify(data));
-      });
+    fetch_post('/submissions', {
+      name: this.state.speaker_name,
+      email: this.state.speaker_email,
+      description: this.state.speaker_description,
+    });
   };
 
   render() {
-    console.log(this.collectSubmissionFormPayload())
     return (
       <div class={s.home}>
         {/* Welcome Text Copy */}
-        {/* NOTE: this might  look good in an ANTd type "card" */}
+        {/* NOTE: this might look good in an ANTd type "card" */}
         <div class={s.welcome_text}>
           <h3>Hello! 👋</h3>
           <p>
@@ -65,23 +45,22 @@ export default class Home extends Component {
           <input
             type="text"
             name="speaker_name"
-            onChange={this.updateFormField}
-          placeholder="Name"
+            onChange={updateFormField.bind(this)}
+            placeholder="Name"
             value={this.state.speaker_name}
           />
           <input
             type="email"
             name="speaker_email"
-          placeholder="Email"
-            onChange={this.updateFormField}
+            placeholder="Email"
+            onChange={updateFormField.bind(this)}
             value={this.state.speaker_email}
           />
           <textarea
             name="speaker_description"
-            onChange={this.updateFormField}
+            onChange={updateFormField.bind(this)}
             value={this.state.speaker_description}
-          placeholder="Describe the topic you are interested in speaking on."
-
+            placeholder="Describe the topic you are interested in speaking on."
           />
           <button onClick={this.submitPitch}>Submit</button>
         </div>

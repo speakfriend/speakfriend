@@ -3,6 +3,7 @@ import { Router } from 'preact-router';
 
 import Header from './header';
 import Home from '../routes/home';
+import Seek from '../routes/seek';
 
 export default class App extends Component {
   /** Gets fired when the route changes.
@@ -17,11 +18,12 @@ export default class App extends Component {
     return (
       <div id="app">
         <Header />
-        <Router oinnChange={this.handleRoute}>
-          <main class="page-container">
+        <main class="page-container">
+          <Router onChange={this.handleRoute}>
             <Home path="/" />
-          </main>
-        </Router>
+            <Seek path="/seek" />
+          </Router>
+        </main>
       </div>
     );
   }

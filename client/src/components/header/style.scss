@@ -12,6 +12,7 @@
 
   .wrapper {
     @include wrapper();
+    align-items: center;
   }
 
   nav {

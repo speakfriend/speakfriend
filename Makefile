@@ -9,5 +9,9 @@ start:
 # remove docker images
 # this isjn't working i don't htink
 
+db_shell:
+	echo "entering the docker psql shell"
+	docker exec -it speakfriend_db psql -U postgres
+
 clean:
 	docker stop speakfriend_db || docker rm speakfriend_db ||  rm -rf client/node_modules || rm -rf node_modules

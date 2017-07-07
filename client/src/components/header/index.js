@@ -12,7 +12,7 @@ export default class Header extends Component {
             <Link activeClassName={style.active} href="/">
               Home
             </Link>
-            <Link activeClassName={style.active} href="/">
+            <Link activeClassName={style.active} href="/seek">
               Find Speakers
             </Link>
             <a href="https://github.com/speakfriend/speakfriend/" target="_blank">
