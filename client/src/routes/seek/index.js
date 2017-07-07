@@ -13,6 +13,11 @@ import config from '../../config';
 import { updateFormField, fetch_get, fetch_post } from '../../functions';
 
 export default class Seek extends Component {
+  constructor(props){
+    super(props)
+    this.updateFormField = updateFormField.bind(this)
+  }
+
   state = {
     event_name: '',
     event_brief: '',
@@ -58,16 +63,16 @@ export default class Seek extends Component {
 
         {/* section 2: Hosts submit the next open spot they have */}
         <div class={s.spots}>
-          <input placeholder="Event name" name="event_name" onChange={updateFormField.bind(this)} />
+          <input placeholder="Event name" name="event_name" onChange={this.updateFormField} />
           <input
             placeholder="Brief description of what you're looking for"
             name="event_brief"
-            onChange={updateFormField.bind(this)}
+            onChange={this.updateFormField}
           />
           <textarea
             placeholder="Any other details a potential speaker should know."
             name="event_details"
-            onChange={updateFormField.bind(this)}
+            onChange={this.updateFormField}
           />
           <button onClick={this.submitSpot}>Submit</button>
         </div>

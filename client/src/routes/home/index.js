@@ -5,6 +5,11 @@ import config from '../../config';
 import { fetch_post, updateFormField } from '../../functions';
 
 export default class Home extends Component {
+  constructor(props){
+    super(props)
+    this.updateFormField = updateFormField.bind(this)
+  }
+
   state = {
     speaker_name: '',
     speaker_email: '',
@@ -45,7 +50,7 @@ export default class Home extends Component {
           <input
             type="text"
             name="speaker_name"
-            onChange={updateFormField.bind(this)}
+            onChange={this.updateFormField}
             placeholder="Name"
             value={this.state.speaker_name}
           />
@@ -53,12 +58,12 @@ export default class Home extends Component {
             type="email"
             name="speaker_email"
             placeholder="Email"
-            onChange={updateFormField.bind(this)}
+            onChange={this.updateFormField}
             value={this.state.speaker_email}
           />
           <textarea
             name="speaker_description"
-            onChange={updateFormField.bind(this)}
+            onChange={this.updateFormField}
             value={this.state.speaker_description}
             placeholder="Describe the topic you are interested in speaking on."
           />
