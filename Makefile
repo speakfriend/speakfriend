@@ -6,9 +6,6 @@ install:
 start:
 	npm run start-db && npm start
 
-# remove docker images
-# this isjn't working i don't htink
-
 db_shell:
 	echo "entering the docker psql shell"
 	docker exec -it speakfriend_db psql -U postgres

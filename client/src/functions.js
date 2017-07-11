@@ -5,7 +5,6 @@ import config from './config';
 // Don't forget to add docstrings!
 /* *********************************** */
 
-
 /**
 * Used to update a form's state using controlled inputs
 * NOTE: you MUST name your form field (inputs, text areas etc)

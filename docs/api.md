@@ -35,8 +35,7 @@ If you're putting together a long term project you might want to use a real post
 @teesloane you can configure the data volume
 to be mapped to a folder you want
 like
-```
-```
+
 postgres:
     build:
       context: .

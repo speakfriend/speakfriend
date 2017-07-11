@@ -31,7 +31,21 @@ Let's install our stack!
 3. Install our dependencies
 
 ```sh
+# on first install you need to download the docker image
+
+sudo docker run --name tutorial -p 5432:5432 \
+                -e POSTGRES_PASSWORD=mysecretpassword \
+                -d postgres
+
+# Now you can install the image and get things running!
+
 make install
+
+# Now you should run the db in a shell and add some sql data to it.
+
+sudo docker exec -it tutorial psql -U postgres
+
+# Now copy and paste the data from db/scratch.sql into the psql shell
 ```
 
 4. Run the entire stack

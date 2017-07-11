@@ -1,15 +1,14 @@
 .seek {
-  display: flex;
-  justify-content: space-between;
-  flex: 1;
-}
-
-.spots {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+  max-width: 700px;
+  margin: 0 auto;
   padding: 2rem;
+  width: 100%;
 
+  section {
+    padding: 1rem;
+  }
+
+  // form styles (must be nested; or add classes to them)
   input {
     padding: 0.5rem;
     margin: 1rem 0;
@@ -18,21 +17,9 @@
   }
 
   textarea {
-    height: 300px;
+    /* height: 2200px; */
     padding: 0.5rem;
     margin: 1rem 0;
     border: 1px solid #dfdfdf;
   }
-
-  button {
-    padding: 1rem;
-    margin: 1rem 0;
-    background: none;
-    outline: none;
-  }
-}
-
-.speakerlist {
-  flex: 1;
-  padding: 2rem;
 }
