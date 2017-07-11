@@ -27,6 +27,7 @@ There are three parts to our application right now:
 Let's install our stack!
 
 1. [Download and install postgrest](https://postgrest.com/en/v4.1/install.html) (< instructions on the page linked )
+    1.1 You'll need to either put POSTGREST in your path, or _put it in the root folder of *SpeakFriend*_.
 2. Move the downloaded binary of _postgrest_ into the root of our project folder
 3. Install our dependencies
 
@@ -36,6 +37,8 @@ Let's install our stack!
 sudo docker run --name tutorial -p 5432:5432 \
                 -e POSTGRES_PASSWORD=mysecretpassword \
                 -d postgres
+
+# Make you have put POSTGREST (the binary) into the project root, or your $PATH.
 
 # Now you can install the image and get things running!
 
