@@ -66,8 +66,8 @@ npm run start-client
 Thanks goes to our contributors ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-| [<img src="https://avatars3.githubusercontent.com/u/12987958?v=3" width="80px;"/><br /><sub>Tyler</sub>](http://tylersloane.com)<br />[💻](https://github.com/speakfriend/speakfriend/commits?author=teesloane "Code") [📖](https://github.com/speakfriend/speakfriend/commits?author=teesloane "Documentation") [🔧](#tool-teesloane "Tools") |
-| :---: |
+| [<img src="https://avatars3.githubusercontent.com/u/12987958?v=3" width="80px;"/><br /><sub>Tyler</sub>](http://tylersloane.com)<br />[💻](https://github.com/speakfriend/speakfriend/commits?author=teesloane "Code") [📖](https://github.com/speakfriend/speakfriend/commits?author=teesloane "Documentation") [🔧](#tool-teesloane "Tools") | [<img src="https://avatars0.githubusercontent.com/u/757976?v=3" width="80px;"/><br /><sub>dann toliver</sub>](https://github.com/dxnn)<br />[💬](#question-dxnn "Answering Questions") [💻](https://github.com/speakfriend/speakfriend/commits?author=dxnn "Code") [📋](#eventOrganizing-dxnn "Event Organizing") [💡](#example-dxnn "Examples") [🚇](#infra-dxnn "Infrastructure (Hosting, Build-Tools, etc)") [👀](#review-dxnn "Reviewed Pull Requests") |
+| :---: | :---: |
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind welcome!
