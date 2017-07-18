@@ -1,8 +1,12 @@
+
+# Node ignores
 node_modules
 npm-debug.log
 
+# Vim ignores
+*.swo
+*.swp
 
-## postgrest / api stuff ##
 
-# postgrest binary
+# PostgREST binary
 postgrest
