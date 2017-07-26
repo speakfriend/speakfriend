@@ -20,6 +20,8 @@
 
 # About
 
+![](docs/screenshots/screenshot_1.png)
+
 SpeakFriend is a tool that wants to make it simpler, easier, and more pleasant to connect people speakers and those who can host speakers. 
 
 If any terms / jargon in our application may appear confusing, please refer to our Terms section near the bottom of this document. 
