@@ -18,7 +18,7 @@ SpeakFriend is currently under development. While our code is constantly availab
 
 # Contributing
 
-Contributions are welcome. If you are interested in working on a feature, we recommend looking through the repo's issues. We gladly welcome bug fixes, although we'll need to have more features before the bugs arrive.
+Contributions are welcome. If you are interested in working on a feature, we recommend looking through the repo's issues. Similarly, you may find todo's throughout the codebase as well as `user stories` inside our `docs/` folder. We gladly welcome bug fixes, although we'll need to have more features before the bugs arrive. 
 
 ## Project Components
 
@@ -32,7 +32,7 @@ There are three parts to our application right now:
 
 ## Setting up the project for development
 
-There are a few steps to get setup on our stack; we are working to simplify this. The tools being used for this project might be a bit new / unconventional, but don't let that stop you from checking this out! You can also find @teesloane on the [TorontoJS slack](http://slack.torontojs.com/) if you have any questions; he try and help you out if he can.
+There are a few steps to get setup on our stack; we are working to simplify this. The tools being used for this project might be a bit new / unconventional, but don't let that stop you from checking this out! You can also find @teesloane on the [TorontoJS slack](http://slack.torontojs.com/) if you have any questions; he'll try and help you out if he can.
 
 
 1. [Download and install postgrest](https://postgrest.com/en/v4.1/install.html) (< instructions on the page linked )
