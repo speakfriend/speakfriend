@@ -36,7 +36,8 @@ There are a few steps to get setup on our stack; we are working to simplify this
 
 
 1. [Download and install postgrest](https://postgrest.com/en/v4.1/install.html) (< instructions on the page linked )
-  1.1 You will need to either put POSTGREST in your path, or _put it in the root folder of *SpeakFriend*_. On a mac for example, `brew install postgrest` will automatically put `postgrest` into your path.
+  
+    1.1 You will need to either put POSTGREST in your path, or _put it in the root folder of *SpeakFriend*_. On a mac for example, `brew install postgrest` will automatically put `postgrest` into your path.
 
 2. We use docker to run our postgres database inside. You will need to [install docker](https://docs.docker.com/engine/installation/#supported-platforms) 
 
