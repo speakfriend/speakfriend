@@ -18,17 +18,18 @@
     "extends": "eslint-config-synacor"
   },
   "devDependencies": {
+    "babel-plugin-import": "^1.2.1",
     "eslint": "^4.1.1",
     "eslint-config-synacor": "^1.0.1",
     "if-env": "^1.0.0",
     "node-sass": "^4.5.3",
-    "preact-cli": "^1.3.0",
-    "sass-loader": "^6.0.6",
+    "preact-cli": "^1.4.1",
     "prettier-eslint": "^6.3.0",
-    "prettier-eslint-cli": "^4.1.0"
+    "prettier-eslint-cli": "^4.1.0",
+    "sass-loader": "^6.0.6"
   },
   "dependencies": {
-    "antd": "^2.12.0",
+    "antd": "^2.12.2",
     "preact": "^8.1.0",
     "preact-compat": "^3.16.0",
     "preact-router": "^2.5.2"
