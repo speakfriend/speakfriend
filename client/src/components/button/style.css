@@ -1,0 +1,37 @@
+.button {
+  background: red;
+}
+
+.button {
+  align-items: center;
+  border: 1px solid transparent;
+  border-radius: 1px;
+  box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.05);
+  display: inline-flex;
+  font-size: 1rem;
+  height: 2.25em;
+  justify-content: flex-start;
+  line-height: 1.5;
+  position: relative;
+  vertical-align: top;
+  user-select: none;
+  background-color: white;
+  color: #363636;
+  cursor: pointer;
+  justify-content: center;
+  padding-left: 0.75em;
+  padding-right: 0.75em;
+  text-align: center;
+  white-space: nowrap;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+
+.button:hover, .button.is-active {
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.15);
+}
+
+.button:active, .button.is-active {
+  box-shadow: none;
+}

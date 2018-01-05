@@ -3,14 +3,14 @@
 node_modules
 npm-debug.log
 
+client/build
+client/node_modules
+
+.DS_Store
+
 # Vim ignores
 *.swo
 *.swp
 
-# Vagrantfile
-Vagrantfile
-.vagrant
 
 
-# PostgREST binary
-postgrest
