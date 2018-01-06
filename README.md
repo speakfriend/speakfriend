@@ -1,6 +1,6 @@
 # Speak Friend
 
-
+SpeakFriend is a tool that wants to make it simpler, easier, and more pleasant to connect speakers and those who wish to host speakers at events.
 
 ## Client
 
@@ -23,5 +23,5 @@ npm run build
 # test the production build locally
 npm run serve
 ```
-Document Title
+
 

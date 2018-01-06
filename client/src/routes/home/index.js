@@ -3,16 +3,9 @@ import style from "./style";
 import Button from "../../components/button/index.js";
 
 export default class Home extends Component {
-
   state = { faqOpen: false };
 
-  toggleFaq = () => {
-    // handle scrolling to/from faq drawer on toggle.
-    this.setState({ faqOpen: !this.state.faqOpen });
-    this.state.faqOpen
-      ? window.scrollTo(0, document.documentElement.scrollTop + 300)
-      : window.scrollTo(0, document.documentElement.scrollTop - 300);
-  };
+  toggleFaq = () => this.setState({ faqOpen: !this.state.faqOpen });
 
   // displays the FAQ questions when faqOpen is true.
   renderFaq = () => (
@@ -39,7 +32,7 @@ export default class Home extends Component {
 
   render() {
     return (
-      <div class={style.home} >
+      <div class={style.home}>
         {/* SECTION: Big hero Copy Text + buttons */}
         <header class="bg-blue washed-yellow">
           <div class="hero w-80 pa4 pv6 ml3">
@@ -71,7 +64,31 @@ export default class Home extends Component {
             {" "}
             before submitting your info.
           </p>
+
           {this.state.faqOpen && this.renderFaq()}
+
+          <form class="flex flex-column mv5 w-50 center">
+            <label for="Email">Email address</label>
+            <input class="pa2 mb4" id="email" type="text" placeholder="Email" />
+
+            <label for="name">What is your name?</label>
+            <input class="pa2 mb4" id="name" type="text" placeholder="Name" />
+
+            <label for="topics">
+              One or more topics you'd like to talk about
+            </label>
+            <input
+              class="pa2 mb4"
+              id="topics"
+              type="text"
+              placeholder="Topics"
+            />
+
+            <label for="bio">Your Bio (optional, to put on RSVP pages)</label>
+            <textarea class="pa2 mb4" id="bio" placeholder="Bio" />
+
+            <Button class="mv2">Submit</Button>
+          </form>
 
         </section>
 
