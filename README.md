@@ -22,7 +22,7 @@ to connect speakers and those who wish to host speakers at events.
 
 **Boot Up!**
 
-install everything and setup db: `make install`
-running the client: `make run-client`
-running the api: `make run-api`
+- install everything and setup db: `make install`
+- running the client: `make run-client`
+- running the api: `make run-api`
 
