@@ -31,3 +31,4 @@ use to build the project.
   issues](https://github.com/speakfriend/speakfriend/issues)
 - consider reading the [roadmap](./roadmap.md) to figure out where we're at on
   the project.
+- If have questions, join the [toronto js slack](http://slack.torontojs.com/) and feel free to ask questions in the #projects channel.
