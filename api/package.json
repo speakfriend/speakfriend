@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@koa/cors": "^2.2.1",
     "knex": "^0.14.2",
     "koa": "^2.4.1",
     "koa-bodyparser": "^4.2.0",

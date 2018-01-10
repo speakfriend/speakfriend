@@ -1,14 +1,45 @@
 import { h, Component } from "preact";
 import style from "./style";
 import Button from "../../components/button/index.js";
+import { POST } from "../../network";
+
+const defaultSubmissionForm = {
+ email:  "",
+ name:   "",
+ topics: "",
+ bio:    ""
+}
+
 
 export default class Home extends Component {
-  state = { faqOpen: false };
+  state = {
+    faqOpen: false,
+    submissionForm: defaultSubmissionForm
+  };
 
-  toggleFaq = () => this.setState({ faqOpen: !this.state.faqOpen });
+  toggleFaq = () => {
+    this.setState({ faqOpen: !this.state.faqOpen });
+  };
+
+  updateForm = e => {
+    this.setState({
+      submissionForm: {
+        ...this.state.submissionForm,
+        [e.target.id]: e.target.value
+      }
+    });
+  };
+
+  submitForm = async e => {
+    e.preventDefault();
+    const rdata = await POST("speaker-submission", this.state.submissionForm);
+    this.setState({submissionForm: defaultSubmissionForm})
+  };
+
+  // -- Sub views --
 
   // displays the FAQ questions when faqOpen is true.
-  renderFaq = () => (
+  faqView = () => (
     <section class="bg-near-white bb bt b--light-gray mv4 pa4">
       <div class="w-70 center">
         <p class="i">
@@ -29,6 +60,58 @@ export default class Home extends Component {
       </div>
     </section>
   );
+
+  submissionFormView = () => {
+    const { email, name, topics, bio } = this.state.submissionForm;
+    return (
+      <form class="flex flex-column mv5 w-50 center" onSubmit={this.submitForm}>
+        <label for="Email">Email address</label>
+        <input
+          class="pa2 mb4"
+          id="email"
+          type="text"
+          value={email}
+          onChange={this.updateForm}
+          placeholder="Email"
+        />
+
+        <label for="name">What is your name?</label>
+        <input
+          class="pa2 mb4"
+          id="name"
+          type="text"
+          value={name}
+          onChange={this.updateForm}
+          placeholder="Name"
+        />
+
+        <label for="topics">
+          One or more topics you'd like to talk about
+        </label>
+        <input
+          class="pa2 mb4"
+          id="topics"
+          type="text"
+          placeholder="Topics"
+          onChange={this.updateForm}
+          value={topics}
+        />
+
+        <label for="bio">Your Bio (optional, to put on RSVP pages)</label>
+        <textarea
+          class="pa2 mb4"
+          id="bio"
+          onChange={this.updateForm}
+          value={bio}
+          placeholder="Bio"
+        />
+
+        <Button class="mv2">Submit</Button>
+      </form>
+    );
+  };
+
+  // --
 
   render() {
     return (
@@ -65,30 +148,8 @@ export default class Home extends Component {
             before submitting your info.
           </p>
 
-          {this.state.faqOpen && this.renderFaq()}
-
-          <form class="flex flex-column mv5 w-50 center">
-            <label for="Email">Email address</label>
-            <input class="pa2 mb4" id="email" type="text" placeholder="Email" />
-
-            <label for="name">What is your name?</label>
-            <input class="pa2 mb4" id="name" type="text" placeholder="Name" />
-
-            <label for="topics">
-              One or more topics you'd like to talk about
-            </label>
-            <input
-              class="pa2 mb4"
-              id="topics"
-              type="text"
-              placeholder="Topics"
-            />
-
-            <label for="bio">Your Bio (optional, to put on RSVP pages)</label>
-            <textarea class="pa2 mb4" id="bio" placeholder="Bio" />
-
-            <Button class="mv2">Submit</Button>
-          </form>
+          {this.state.faqOpen && this.faqView()}
+          {this.submissionFormView()}
 
         </section>
 

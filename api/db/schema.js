@@ -8,12 +8,12 @@ const knex = require('knex')(knexfile.development);
 
 const schema = {
   submissions: () => knex.schema.createTableIfNotExists("submissions", table => {
-    table.increments("id");
+    table.increments();
     table.string("name");
     table.string("email");
     table.string("topics");
     table.string("bio");
-    table.timestamp("created_at").defaultTo(knex.fn.now());
+    table.timestamps(true, true);
   })
 };
 
