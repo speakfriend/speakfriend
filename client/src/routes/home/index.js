@@ -10,11 +10,11 @@ const defaultSubmissionForm = {
  bio:    ""
 }
 
-
 export default class Home extends Component {
   state = {
     faqOpen: false,
-    submissionForm: defaultSubmissionForm
+    submissionForm: defaultSubmissionForm,
+    errors: {}
   };
 
   toggleFaq = () => {
@@ -32,9 +32,27 @@ export default class Home extends Component {
 
   submitForm = async e => {
     e.preventDefault();
+
+    const { errors, isValid } = this.validateForm(this.state.submissionForm)
+    if (!isValid) {
+      this.setState({ errors })
+      return;
+    }
+
     const rdata = await POST("speaker-submission", this.state.submissionForm);
-    this.setState({submissionForm: defaultSubmissionForm})
+    this.setState({submissionForm: defaultSubmissionForm, errors: {}})
   };
+
+  validateForm = values => {
+    const errors = Object.keys(values).reduce((acc, curr) => {
+      if (values[curr] === '') {
+        acc[curr] = 'This field is required'
+      }
+      return acc
+    }, {})
+
+    return { errors: errors, isValid: Object.keys(errors).length === 0 }
+  }
 
   // -- Sub views --
 
@@ -62,49 +80,62 @@ export default class Home extends Component {
   );
 
   submissionFormView = () => {
-    const { email, name, topics, bio } = this.state.submissionForm;
+    const { errors, submissionForm } = this.state;
+    const { email, name, topics, bio } = submissionForm;
     return (
       <form class="flex flex-column mv5 w-50 center" onSubmit={this.submitForm}>
-        <label for="Email">Email address</label>
-        <input
-          class="pa2 mb4"
-          id="email"
-          type="text"
-          value={email}
-          onChange={this.updateForm}
-          placeholder="Email"
-        />
+        <div class="flex flex-column mb4">
+          <label for="Email">Email address *</label>
+          <input
+            class="pa2"
+            id="email"
+            type="text"
+            value={email}
+            onChange={this.updateForm}
+            placeholder="Email"
+          />
+          {errors.email && <span class={style.inputError}>{errors.email}</span>}
+        </div>
 
-        <label for="name">What is your name?</label>
-        <input
-          class="pa2 mb4"
-          id="name"
-          type="text"
-          value={name}
-          onChange={this.updateForm}
-          placeholder="Name"
-        />
+        <div class="flex flex-column mb4">
+          <label for="name">What is your name? *</label>
+          <input
+            class="pa2"
+            id="name"
+            type="text"
+            value={name}
+            onChange={this.updateForm}
+            placeholder="Name"
+          />
+          {errors.name && <span class={style.inputError}>{errors.name}</span>}
+        </div>
 
-        <label for="topics">
-          One or more topics you'd like to talk about
-        </label>
-        <input
-          class="pa2 mb4"
-          id="topics"
-          type="text"
-          placeholder="Topics"
-          onChange={this.updateForm}
-          value={topics}
-        />
+        <div class="flex flex-column mb4">
+          <label for="topics">
+            One or more topics you'd like to talk about *
+          </label>
+          <input
+            class="pa2"
+            id="topics"
+            type="text"
+            placeholder="Topics"
+            onChange={this.updateForm}
+            value={topics}
+          />
+          {errors.topics && <span class={style.inputError}>{errors.topics}</span>}
+        </div>
 
-        <label for="bio">Your Bio (optional, to put on RSVP pages)</label>
-        <textarea
-          class="pa2 mb4"
-          id="bio"
-          onChange={this.updateForm}
-          value={bio}
-          placeholder="Bio"
-        />
+        <div class="flex flex-column mb4">
+          <label for="bio">Your Bio *</label>
+          <textarea
+            class="pa2"
+            id="bio"
+            onChange={this.updateForm}
+            value={bio}
+            placeholder="Bio"
+          />
+          {errors.bio && <span class={style.inputError}>{errors.bio}</span>}
+        </div>
 
         <Button class="mv2">Submit</Button>
       </form>

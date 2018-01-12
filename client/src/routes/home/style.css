@@ -5,3 +5,6 @@
   padding-bottom: 400px; /* temporary */
 }
 
+.inputError {
+  color: red;
+}
