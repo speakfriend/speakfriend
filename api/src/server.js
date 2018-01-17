@@ -1,8 +1,12 @@
-const Koa = require("koa");
-const logger = require("koa-logger");
-const cors = require("@koa/cors");
-const router = require("koa-router")();
+// Koa things:
+const Koa        = require("koa");
+const logger     = require("koa-logger");
+const cors       = require("@koa/cors");
+const router     = require("koa-router")();
 const bodyParser = require("koa-bodyparser");
+const session    = require('koa-session');
+const passport   = require('koa-passport');
+// --
 const app = new Koa();
 const db = require("./db");
 
@@ -17,6 +21,13 @@ router
 
 // -- Middleware ---------------------------------------------------------------
 /* NOTE: beware the order of middleware borking things. ಠ_ಠ */
+
+app.keys = ['super-secret-key']; // for sessions
+app.use(session(app));
+
+require('./auth'); // todo - write this auth
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(cors());
 app.use(bodyParser());

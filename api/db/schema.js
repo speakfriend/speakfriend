@@ -7,6 +7,7 @@ const knexfile = require('./knexfile.js');
 const knex = require('knex')(knexfile.development);
 
 const schema = {
+  // A submission (also seen as "proposal") is an object describing a "talk" a speaker would like to present / pitch.
   submissions: () => knex.schema.createTableIfNotExists("submissions", table => {
     table.increments();
     table.string("name");
@@ -14,6 +15,15 @@ const schema = {
     table.string("topics");
     table.string("bio");
     table.timestamps(true, true);
+  }),
+
+  // Users are people who use the site in an authenticated manner.
+  // Example: Those who are reviewing speaker submissions need to authenticate to do so.
+  // Users may expand to involve auth for those who submit or other future facing features.
+  users: () => knex.schema.createTableIfNotExists("users", table => {
+    table.increments();
+    table.string('username').unique().notNullable();
+    table.string('password').notNullable();
   })
 };
 

@@ -17,6 +17,18 @@ const speaker = {
   }
 };
 
+
+const user = {
+  getById(id) {
+    return knex("users").where({id}).first()
+  },
+
+  getByUsername(username) {
+    return knex("users").where({username}).first()
+  }
+}
+
 module.exports = {
-  speaker
+  speaker,
+  user
 };
