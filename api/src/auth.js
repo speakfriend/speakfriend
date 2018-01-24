@@ -1,6 +1,5 @@
 const passport = require("koa-passport");
 const LocalStrategy = require('passport-local').Strategy;
-const knex = require("./db/connection");
 const db = require("./db");
 
 // inspiration (ie, copy-pasta) http://mherman.org/blog/2018/01/02/user-authentication-with-passport-and-koa/
@@ -19,7 +18,7 @@ passport.deserializeUser((id, done) => {
 });
 
 // Set up standard password based auth
-passport.use(new LocalStrategy(options, (username, password, done) => {
+passport.use(new LocalStrategy({}, (username, password, done) => {
   db.users.getByUsername(username)
   .then((user) => {
     if (!user) return done(null, false);

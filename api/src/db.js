@@ -25,6 +25,10 @@ const user = {
 
   getByUsername(username) {
     return knex("users").where({username}).first()
+  },
+
+  create(payload) {
+    return knex("users").insert(payload).returning("*")
   }
 }
 
