@@ -1,6 +1,7 @@
 import { h, Component } from "preact";
 import style from "./style";
 import Button from "../../components/button/index.js";
+import Input from "../../components/input";
 import { POST } from "../../network";
 
 const defaultSubmissionForm = {
@@ -84,18 +85,15 @@ export default class Home extends Component {
     const { email, name, topics, bio } = submissionForm;
     return (
       <form class="flex flex-column mv5 w-50 center" onSubmit={this.submitForm}>
-        <div class="flex flex-column mb4">
-          <label for="Email">Email address *</label>
-          <input
-            class="pa2"
-            id="email"
-            type="text"
-            value={email}
-            onChange={this.updateForm}
-            placeholder="Email"
-          />
-          {errors.email && <span class={style.inputError}>{errors.email}</span>}
-        </div>
+        <Input
+          id="email"
+          label="Email address *"
+          class="pa2"
+          value={email}
+          handleChange={this.updateForm}
+          errorStyle={style.inputError}
+          error={errors.email}
+        />
 
         <div class="flex flex-column mb4">
           <label for="name">What is your name? *</label>
