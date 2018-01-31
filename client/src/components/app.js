@@ -4,6 +4,7 @@ import { Router } from "preact-router";
 import Header from "./header";
 import Home from "../routes/home";
 import Auth from "../routes/auth";
+import Host from '../routes/host';
 
 export default class App extends Component {
   /** Gets fired when the route changes.
@@ -20,6 +21,7 @@ export default class App extends Component {
         <Header />
         <Router onChange={this.handleRoute}>
           <Home path="/" />
+          <Host path="/host/" />
           <Auth path="/auth/" />
         </Router>
       </div>

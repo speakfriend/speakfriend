@@ -23,6 +23,7 @@ const schema = {
   users: () => knex.schema.createTableIfNotExists("users", table => {
     table.increments();
     table.string('username').unique().notNullable();
+    table.string('email').unique().notNullable();
     table.string('password').notNullable();
   })
 };

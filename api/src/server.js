@@ -57,7 +57,6 @@ async function createTalkProposal(ctx) {
   }
 }
 
-// I don't like these names yet.
 async function getTalkProposals(ctx) {
   const proposals = await db.speaker.getProposals();
   ctx.body = {
@@ -67,29 +66,33 @@ async function getTalkProposals(ctx) {
 
 async function login(ctx) {
   const loginCreds = ctx.request.body;
-  try {
-    const rdata = await db.speaker.createProposal(speakerSubmissionForm);
-    ctx.status = 201;
-    ctx.body = {
-      status: "success",
-      data: "MUCH SUCCESS VERY WOW"
-    };
-  } catch (e) {
-    ctx.status = 400;
-    ctx.body = {
-      status: "error",
-      message: e.message || "Sorry, an error has occurred."
-    };
-  }
+
+  return passport.authenticate('local', (err, user, info, status) => {
+    if (user) {
+      ctx.login(user);
+      ctx.status = 200;
+      ctx.body = {
+        data: "'login' was successful. You're not actually logged in though because I haven't built sessions + auth + auth + all the stuff LORDY LOU"
+      }
+    } else {
+      ctx.status = 400;
+      ctx.body = { status: 'error' };
+    }
+  })(ctx);
+
 }
 
 async function register(ctx) {
   // TODO validate ctx.request.body for proper fields for user.
   const user = await db.user.create(ctx.request.body);
-  console.log("who's an ew user? ", user)
+  console.log("who's a new user? ", user)
   return passport.authenticate("local", (err, user, info, status) => {
     if (user) {
       ctx.login(user);
+      ctx.status = 200;
+      ctx.body = {
+        data: user // res will change of course.
+      }
       ctx.redirect("/auth/status");
     } else {
       ctx.status = 400;

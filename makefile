@@ -25,6 +25,9 @@ db-seed:
 	$(info "ps. you just wiped your db.")
 	cd api/ && ./node_modules/.bin/knex seed:run --knexfile db/knexfile.js
 
+db-shell:
+	cd api/db && sqlite3
+
 #
 # Running stuff
 #

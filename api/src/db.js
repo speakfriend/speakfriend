@@ -5,6 +5,7 @@
 
 const knexfile = require("../db/knexfile.js");
 const knex = require("knex")(knexfile.development);
+const bcrypt = require("bcryptjs");
 
 // speaker queries
 const speaker = {
@@ -17,20 +18,25 @@ const speaker = {
   }
 };
 
-
 const user = {
   getById(id) {
-    return knex("users").where({id}).first()
+    return knex("users").where({ id }).first();
   },
 
-  getByUsername(username) {
-    return knex("users").where({username}).first()
+  getByEmail(email) {
+    return knex("users").where({ email }).first();
   },
 
-  create(payload) {
-    return knex("users").insert(payload).returning("*")
+  create(newUser) {
+    const salt = bcrypt.genSaltSync();
+    const hash = bcrypt.hashSync(newUser.password, salt);
+    return knex("users").insert({
+      username: newUser.username,
+      email: newUser.email,
+      password: hash,
+    }).returning("*");
   }
-}
+};
 
 module.exports = {
   speaker,
