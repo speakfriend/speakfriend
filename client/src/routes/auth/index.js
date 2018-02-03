@@ -63,7 +63,7 @@ export default class Auth extends Component {
 
   render() {
     return (
-      <div class="pt4">
+      <div class="flex flex-auto">
         <AuthBox />
       </div>
     );

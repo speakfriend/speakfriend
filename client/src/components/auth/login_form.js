@@ -32,9 +32,9 @@ const LoginForm = (props) => {
           />
       </div>
 
-      <Button class="mv2">Login</Button>
+      <Button class="mb4">Login</Button>
 
-      <div> Don't have an account? <a href="#" onClick={swapForm}> Register</a></div>
+      <div> Don't have an account? <a href="#" onClick={swapForm}> Register ↪</a></div>
     </form>
   );
 };

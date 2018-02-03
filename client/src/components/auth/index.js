@@ -4,6 +4,8 @@ import Button from "../button/index";
 import LoginForm from "./login_form";
 import RegisterForm from "./register_form";
 import style from "./style.css";
+import { POST } from "../../network";
+
 
 const defaultRegisterForm = {
   email: "",
@@ -73,9 +75,10 @@ export default class AuthBox extends Component {
           />
         : <RegisterForm
             email={this.state.registerForm.email}
+            username={this.state.registerForm.username}
             password={this.state.registerForm.password}
             updateRegisterForm={this.updateRegisterForm}
-            submitRegister={this.submitRegister}
+            submitRegistration={this.submitRegistration}
             swapForm={this.swapForm}
           />);
 

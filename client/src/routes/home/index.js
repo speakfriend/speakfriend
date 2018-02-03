@@ -142,8 +142,6 @@ export default class Home extends Component {
     );
   };
 
-  // --
-
   render() {
     return (
       <div class={style.home}>
@@ -160,9 +158,7 @@ export default class Home extends Component {
             <h3 class="f2 lh-copy">
               A portal for connecting speakers, mentors, and friends.
             </h3>
-            <Button class="mr4">I'm looking to give a talk! 🎤 </Button>
-            <Button>I can host talks! 🏫</Button>
-          </div>
+           </div>
         </header>
 
         {/* SPACER */}

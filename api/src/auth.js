@@ -2,6 +2,7 @@ const passport = require("koa-passport");
 const bcrypt = require("bcryptjs");
 const LocalStrategy = require("passport-local").Strategy;
 const db = require("./db");
+const users = require("./users");
 
 // inspiration (ie, copy-pasta) http://mherman.org/blog/2018/01/02/user-authentication-with-passport-and-koa/
 // will make bespoke when needed
@@ -13,7 +14,7 @@ passport.serializeUser((user, done) => {
 
 passport.deserializeUser((id, done) => {
   // this could probably be try/catch but I stole it from a tut and I'm lazy
-  return db.users
+  return users.db
     .getById(id)
     .then(user => {
       done(null, user);
@@ -26,7 +27,7 @@ passport.deserializeUser((id, done) => {
 // Set up standard password based auth
 passport.use(
   new LocalStrategy({ usernameField: "email" }, (email, password, done) => {
-    db.user
+    users.db
       .getByEmail(email)
       .then(user => {
         if (!user) return done(null, false);

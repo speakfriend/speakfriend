@@ -2,11 +2,11 @@ import { h, Component } from "preact";
 import Button from "../button/index";
 
 const RegisterForm = (props) => {
-  const { email, password, username, swapForm, submitRegistration, updateLoginForm } = props;
+  const { email, password, username, swapForm, submitRegistration, updateRegisterForm } = props;
   return (
     <form
       class="flex flex-column mv5 w-70 center"
-      onSubmit={this.submitRegistration}
+      onSubmit={submitRegistration}
       >
       <div class="flex flex-column mb4">
         <label for="Email">Email address *</label>
@@ -15,7 +15,7 @@ const RegisterForm = (props) => {
           id="email"
           type="text"
           value={email}
-          onChange={this.updateRegisterForm}
+          onChange={updateRegisterForm}
           placeholder="Email"
           />
       </div>
@@ -27,7 +27,7 @@ const RegisterForm = (props) => {
           id="username"
           type="text"
           value={username}
-          onChange={this.updateRegisterForm}
+          onChange={updateRegisterForm}
           placeholder="username"
           />
       </div>
@@ -39,15 +39,13 @@ const RegisterForm = (props) => {
           id="password"
           type="password"
           value={password}
-          onChange={this.updateRegisterForm}
+          onChange={updateRegisterForm}
           placeholder="password"
           />
       </div>
 
-      <Button class="mv2">Submit</Button>
-
-      <div> Don't have an account? <a href="#" onClick={swapForm}> Register</a></div>
-
+      <Button class="mb4">Register</Button>
+      <div> Already have an account? <a href="#" onClick={swapForm}> Login ↪ </a></div>
     </form>
   );
 };

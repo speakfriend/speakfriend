@@ -9,6 +9,9 @@ const passport = require("koa-passport");
 // --
 const app = new Koa();
 const db = require("./db");
+const users = require('./users');
+const speakers = require('./speakers');
+
 
 // -- Routes -------------------------------------------------------------------
 
@@ -16,89 +19,25 @@ const api = "/api";
 
 router
   .get(`${api}/ping`, async ctx => ctx.body = "ping")
-  .get(`${api}/submissions`, getTalkProposals)
-  .post(`${api}/speaker-submission`, createTalkProposal)
-  .post(`${api}/auth/login`, login)
-  .post(`${api}/auth/register`, register);
+  .get(`${api}/submissions`, speakers.handle.getTalkProposals)
+  .post(`${api}/speaker-submission`, speakers.handle.createTalkProposal)
+  .post(`${api}/auth/login`, users.handle.login)
+  .post(`${api}/auth/register`, users.handle.register);
 
 // -- Middleware ---------------------------------------------------------------
 /* NOTE: beware the order of middleware borking things. ಠ_ಠ */
 
-app.keys = ["super-secret-key"]; // for sessions
+app.keys = ["super-secret-key"]; // for sessions -- nothing yet.
 app.use(session(app));
 
-require('./auth'); // todo - write this auth
+require('./auth');
+
 app.use(passport.initialize());
 app.use(passport.session());
-
 app.use(cors());
 app.use(bodyParser());
 app.use(router.routes());
 app.use(logger());
 
-// -- Handlers -----------------------------------------------------------------
-
-async function createTalkProposal(ctx) {
-  // TODO validate ctx.request.body for proper fields for submissions.
-  const speakerSubmissionForm = ctx.request.body;
-  try {
-    const rdata = await db.speaker.createProposal(speakerSubmissionForm);
-    ctx.status = 201;
-    ctx.body = {
-      status: "success",
-      data: "MUCH SUCCESS VERY WOW"
-    };
-  } catch (e) {
-    ctx.status = 400;
-    ctx.body = {
-      status: "error",
-      message: e.message || "Sorry, an error has occurred."
-    };
-  }
-}
-
-async function getTalkProposals(ctx) {
-  const proposals = await db.speaker.getProposals();
-  ctx.body = {
-    data: proposals
-  };
-}
-
-async function login(ctx) {
-  const loginCreds = ctx.request.body;
-
-  return passport.authenticate('local', (err, user, info, status) => {
-    if (user) {
-      ctx.login(user);
-      ctx.status = 200;
-      ctx.body = {
-        data: "'login' was successful. You're not actually logged in though because I haven't built sessions + auth + auth + all the stuff LORDY LOU"
-      }
-    } else {
-      ctx.status = 400;
-      ctx.body = { status: 'error' };
-    }
-  })(ctx);
-
-}
-
-async function register(ctx) {
-  // TODO validate ctx.request.body for proper fields for user.
-  const user = await db.user.create(ctx.request.body);
-  console.log("who's a new user? ", user)
-  return passport.authenticate("local", (err, user, info, status) => {
-    if (user) {
-      ctx.login(user);
-      ctx.status = 200;
-      ctx.body = {
-        data: user // res will change of course.
-      }
-      ctx.redirect("/auth/status");
-    } else {
-      ctx.status = 400;
-      ctx.body = { status: "error" };
-    }
-  })(ctx);
-}
 
 app.listen(3001);
